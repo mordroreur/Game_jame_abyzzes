@@ -1,4 +1,4 @@
 *.o
-res
-res.exe
+app
+app.exe
 .kra
