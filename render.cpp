@@ -72,7 +72,6 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 	std::thread drawThread (boucleAffichage, ec);
 	
 	while(ec->ej != etapeJeu::fin) {
-		std::cerr<<"FFF"<<std::endl;
 		NowTime = getTime();
 
 		/* Gestion des verif gameplay */
