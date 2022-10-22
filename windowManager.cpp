@@ -37,8 +37,6 @@ bool Ecran::init(int x, int y){
 				     sizey, SDL_WINDOW_RESIZABLE);
 
   
-  
-  
   /*
   SDL_Surface *thumbnail;
   thumbnail = IMG_Load("Res/thumbnail.png");
