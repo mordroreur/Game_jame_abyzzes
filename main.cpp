@@ -1,6 +1,6 @@
 #include <iostream>
 #include "windowManager.h"
-#include "render.h"
+#include "gestionInput.h"
 
 int main(int, char*[]){
 
