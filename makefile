@@ -1,7 +1,7 @@
 CC=g++
 
 LDFLAG=$(shell sdl2-config --libs) -lSDL2_ttf -lpthread -lSDL2_image
-CFLAG=$(shell sdl2-config --cflags) -Wall -Wextra -g
+CFLAG=$(shell sdl2-config --cflags) -Wall -Wextra -g -std=c++17
 
 EXEC=app
 SRC=$(wildcard *.cpp)

@@ -3,7 +3,6 @@
 
 #include "vecteur2.hxx"
 #include <math.h>
-#include <numbers>
 
 namespace geometrie
 {
@@ -27,7 +26,7 @@ namespace geometrie
 		const auto angleB = angle<Angle>(b);
 
 		const auto angleAB = angleB - angleA;
-		using std::numbers::pi;
+                double pi = 3.141592653589793238462643383279;
 		if (angleAB>pi) {
 			return angleAB-2*pi;
 		}

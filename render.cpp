@@ -107,7 +107,7 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 			switch (event.type)
 			{
 			case SDL_KEYDOWN:
-				//keyDown(event.key, screen);
+                          std::cout << event.key.keysym.sym << std::endl;
 				break;
 			case SDL_KEYUP:
 		//if(event.key.keysym.sym == SDLK_F11){
