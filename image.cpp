@@ -1,5 +1,6 @@
 #include "image.hpp"
 #include <SDL2/SDL_image.h>
+#include <iostream>
 
 Image::Image(SDL_Renderer* renderer, const std::vector<std::string>& paths, int timeByFrame_)
 	: timeByFrame{timeByFrame_}

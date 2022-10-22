@@ -3,6 +3,6 @@
 
 #include "windowManager.h"
 
-void startMainBoucle(Ecran *ec);
+void startMainBoucle(std::shared_ptr<Ecran> ec);
 
 #endif

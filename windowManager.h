@@ -5,6 +5,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_render.h>
 #include <string>
+#include <map>
+#include <memory>
+#include "nom_images.hpp"
+#include "image.hpp"
 
 enum class etapeJeu {fin, menu};
 
@@ -14,6 +18,8 @@ public :
   ~Ecran();
 
   etapeJeu ej;
+  std::shared_ptr<Image> getImage(const NomImage& ni);
+  SDL_Renderer* getRenderer();
 private:
   int sizex, sizey;
   
@@ -21,6 +27,8 @@ private:
   SDL_Renderer *renderer;
   
   bool init(int x, int y);
+  void populateImages();
+  std::map<NomImage, std::shared_ptr<Image>> images;
 };
 
 long int getTime();

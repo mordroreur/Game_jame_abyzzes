@@ -3,6 +3,6 @@
 
 #include "windowManager.h"
 
-void ticks(Ecran *ec, int deltaTime);
+void ticks(std::shared_ptr<Ecran> ec, int deltaTime);
 
 #endif /* __GARDIEN_TICK_MANAGER_H__ */
