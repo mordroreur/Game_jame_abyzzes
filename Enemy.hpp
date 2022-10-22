@@ -10,6 +10,9 @@ class Enemy: public Entity
 
 
 public:
+
+    using Entity::Entity;
+    
     void update(int delta); 
 
 };

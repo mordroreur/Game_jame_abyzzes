@@ -9,6 +9,9 @@
 class Entity : public GameObject , public Movable , public HealthLosable
 {
 public:
+
+
+    using  GameObject::GameObject;
     geometrie::Vecteur2<int> direction;
     short int speed;
     short int health;

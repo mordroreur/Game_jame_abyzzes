@@ -15,11 +15,11 @@ protected:
 
     geometrie::Vecteur2<int> position;
     std::shared_ptr<Image>  image;
-    int w;
-    int h;
+    int width;
+    int height;
        
 public:
-    GameObject(/* args */);
+    GameObject(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, int w, int h);
     void update(int delta);
 
     std::shared_ptr<Image> getImage();

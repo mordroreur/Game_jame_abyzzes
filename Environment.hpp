@@ -5,11 +5,9 @@
 
 class Environment : public GameObject
 {
-
+    using GameObject::GameObject;
+    
 };
-
-
-
 
 
 
