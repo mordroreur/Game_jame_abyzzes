@@ -14,13 +14,18 @@ private:
 protected:
 
     geometrie::Vecteur2<int> position;
-    std::shared_ptr<Image>  canvas;
-    SDL_Rect rect;
+    std::shared_ptr<Image>  image;
+    int w;
+    int h;
        
 public:
     GameObject(/* args */);
-    virtual void render() = 0;
     virtual void update(int delta) = 0;
+
+    std::shared_ptr<Image> getImage();
+    SDL_Rect getRect();
 };
+
+
 
 #endif
