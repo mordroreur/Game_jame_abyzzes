@@ -1,16 +1,12 @@
 #include <iostream>
 #include "windowManager.h"
+#include "render.h"
 
-
-int main(int argc, char* argv[]){
+int main(int, char*[]){
 
   Ecran ec;
 
-  int i = 0;
-  while(i < 100){
-    i++;
-    SDL_Delay(10);
-  }
+  startMainBoucle(&ec);
 
   return 0;
 }

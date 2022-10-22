@@ -6,7 +6,7 @@
 #include <SDL2/SDL_render.h>
 #include <string>
 
-enum class etapeJeu {menu};
+enum class etapeJeu {fin, menu};
 
 class Image{
  public:
@@ -18,13 +18,14 @@ class Ecran{
 public :
   Ecran();
   ~Ecran();
+
+  etapeJeu ej;
 private:
   int sizex, sizey;
   
   SDL_Window *window;
   SDL_Renderer *renderer;
   std::vector<Image> imlist;
-  etapeJeu ej;
   
   bool init(int x, int y);
   Image loadImage(const std::string &path);
