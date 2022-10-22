@@ -70,7 +70,7 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 		}
 
                 Input tempory;
-                tempory.shoot = geometrie::Vecteur2<int>{0, 0};
+                tempory.shoot = geometrie::Vecteur2<float>{0.0, 0.0};
                                 
 		while (SDL_PollEvent(&event))
 		{
@@ -107,7 +107,7 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 				if (event.button.button == SDL_BUTTON_LEFT) {
                                   int posMX, posMY;
                                   SDL_GetMouseState(&posMX, &posMY);
-                                  tempory.shoot = geometrie::Vecteur2<int>{posMX - (ec->sizex/2), posMY - (ec->sizey/2)};
+                                  tempory.shoot = geometrie::Vecteur2<float>{posMX - (ec->sizex/2.0), posMY - (ec->sizey/2.0)};
                                   tempory.shoot = geometrie::normalized(tempory.shoot);
 				} else if (event.button.button == SDL_BUTTON_RIGHT) {
                                   //
@@ -137,7 +137,7 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 				break;
 			}
 		}
-                tempory.direction = geometrie::Vecteur2<int>{dep[1] + (-1)*dep[3], dep[2] + (-1)*dep[0]};
+                tempory.direction = geometrie::Vecteur2<float>{dep[1] + (-1.0)*dep[3], dep[2] + (-1.0)*dep[0]};
                 tempory.power = powerOn;
                 ec->player->setInput(tempory);
                 

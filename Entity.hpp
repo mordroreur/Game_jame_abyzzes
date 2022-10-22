@@ -12,14 +12,14 @@ public:
 
 
     using  GameObject::GameObject;
-    geometrie::Vecteur2<int> direction;
+    geometrie::Vecteur2<float> direction;
     short int speed;
     short int health;
 
 
     virtual void move() override;
     virtual void updateSpeed(int newSpeed) override;
-    virtual void updateDirection(geometrie::Vecteur2< int> direction) override;
+    virtual void updateDirection(geometrie::Vecteur2<float> direction) override;
     void loseHealth(short int amountLost) override;
     void update(int delta);
     

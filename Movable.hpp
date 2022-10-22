@@ -8,7 +8,7 @@ class Movable
 public:
     virtual void move() = 0;
     virtual void updateSpeed(int newSpeed) = 0;
-    virtual void updateDirection(geometrie::Vecteur2< int> direction)=0;
+    virtual void updateDirection(geometrie::Vecteur2<float> direction)=0;
 };
 
 

@@ -10,7 +10,8 @@ void Entity::loseHealth(short int amountLost)
 
 void Entity::move()
 {
-    position = position + speed * geometrie::normalized(direction); 
+  if(direction != geometrie::Vecteur2<float>{0, 0})
+  position = position + geometrie::vecteur2From<int>(speed * geometrie::normalized(direction)); 
 }
 
 
@@ -20,7 +21,7 @@ void Entity::updateSpeed(int newSpeed)
     speed = newSpeed;
 }
 
-void Entity::updateDirection(geometrie::Vecteur2<int> newDirection)
+void Entity::updateDirection(geometrie::Vecteur2<float> newDirection)
 {
     direction = newDirection;
 }

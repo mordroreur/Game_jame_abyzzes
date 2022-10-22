@@ -19,7 +19,6 @@ void Player::setInput(Input newInput)
 
 void Player::update(int delta)
 {
-  std::cout << geometrie::toString(direction)<< std::endl;
     move();
 }
 
