@@ -10,6 +10,7 @@
 #include <mutex>
 #include "Input.hpp"
 #include "geometrie/geometrie.hxx"
+#include "logger.h"
 
 static std::mutex mutexDo;
 
@@ -35,6 +36,10 @@ void Affichage(std::shared_ptr<Ecran> ec, int deltaTime){
 		
 		if (rect.has_value()) {
 			go->getImage()->draw(renderer, rect.value());
+			log("Ok");
+		}
+		else {
+			log("Faux");
 		}
 	}
 	

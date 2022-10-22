@@ -8,7 +8,7 @@
 #include <map>
 #include <memory>
 #include "nom_images.hpp"
-#include "image.hpp"
+#include "image/image.hpp"
 #include "GameObject.hpp"
 #include "Player.hpp"
 

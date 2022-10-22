@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 #include <time.h>
 #include "windowManager.h"
+#include "image/imageFixe.hpp"
 
 Ecran::Ecran():ej(etapeJeu::menu){
   if(!init(1080, 750)){
@@ -9,7 +10,9 @@ Ecran::Ecran():ej(etapeJeu::menu){
   //load images
   populateImages();
 
+  gameObjects.push_back(std::make_shared<Player>(geometrie::Vecteur2<int>{200,100}, getImage(NomImage::Ennemy1), 50,50));
   constructPlayer();
+
 }
 
 Ecran::~Ecran(){
@@ -90,7 +93,8 @@ SDL_Renderer* Ecran::getRenderer() {
 }
 
 void Ecran::populateImages() {
-	images.insert(std::pair{NomImage::Siren, std::make_shared<Image>(getRenderer(), std::vector{std::string{"images/sirene.png"}}, 100)});
+	images.insert(std::pair{NomImage::Siren, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/sirene.png"})});
+	images.insert(std::pair{NomImage::Ennemy1, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/enemy.png"})});
 }
 
 

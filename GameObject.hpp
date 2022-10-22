@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 #include <SDL2/SDL.h>
-#include "image.hpp"
+#include "image/image.hpp"
 #include <memory>
 #include <SDL2/SDL_image.h>
 #include "geometrie/geometrie.hxx"
