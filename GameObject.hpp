@@ -20,7 +20,7 @@ protected:
        
 public:
     GameObject(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, int w, int h);
-    void update(int delta);
+    virtual void update(int delta) = 0;
 
     std::shared_ptr<Image> getImage();
     SDL_Rect getRect();

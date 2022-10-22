@@ -25,7 +25,3 @@ SDL_Rect GameObject::getRect()
     return rect;
 }
 
-void update(int delta)
-{
-
-}
