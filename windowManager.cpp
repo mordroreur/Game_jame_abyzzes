@@ -67,14 +67,6 @@ bool Ecran::init(int x, int y){
   return true;
 }
 
-Image Ecran::loadImage(const std::string &path){
-  return Image();
-}
-
-void Ecran::DrawImage(Image *im, float x, float y, float sizeX, float sizeY, char center, int etatPremier, float TimebeforeNext, int flip, int angle){
-  
-}
-
 long int getTime(){
   struct timespec tms;
   if (clock_gettime(CLOCK_REALTIME,&tms)) {

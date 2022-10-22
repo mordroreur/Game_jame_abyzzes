@@ -19,10 +19,8 @@ private:
   
   SDL_Window *window;
   SDL_Renderer *renderer;
-  std::vector<std::Image> imlist;
   
   bool init(int x, int y);
-  void DrawImage(Image *im, float x, float y, float sizeX, float sizeY, char center, int etatPremier, float TimebeforeNext, int flip, int angle);
 };
 
 long int getTime();
