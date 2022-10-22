@@ -5,7 +5,7 @@
 class HealthGainable
 {
 public:
-    virtual void gainHealth(int amountLost) = 0;
+    virtual void gainHealth(short int amoutGained) = 0;
 };
 
 

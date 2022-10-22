@@ -25,3 +25,8 @@ void Entity::updateDirection(geometrie::Vecteur2<int> newDirection)
     direction = newDirection;
 }
 
+
+void Entity::update(int delta)
+{
+    move();
+}

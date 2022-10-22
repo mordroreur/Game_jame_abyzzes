@@ -18,6 +18,7 @@ public:
     virtual void updateSpeed(int newSpeed) override;
     virtual void updateDirection(geometrie::Vecteur2< int> direction) override;
     void loseHealth(short int amountLost) override;
+    void update(int delta) override;
     
 
 
