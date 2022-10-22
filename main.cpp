@@ -4,9 +4,9 @@
 
 int main(int, char*[]){
 
-  Ecran ec;
+  auto ec = std::make_shared<Ecran>();
 
-  startMainBoucle(&ec);
+  startMainBoucle(ec);
   
   return 0;
 }

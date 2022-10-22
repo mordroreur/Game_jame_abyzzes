@@ -1,7 +1,8 @@
 CC=g++
 
 LDFLAG=$(shell sdl2-config --libs) -lSDL2_ttf -lpthread -lSDL2_image
-CFLAG=$(shell sdl2-config --cflags) -Wall -Wextra -g
+CFLAG=$(shell sdl2-config --cflags) -Wall -Wextra -g -std=c++17(setq tab-width 4) ; or any other preferred value
+    (defvaralias 'c-basic-offset 'tab-width)
 
 EXEC=app
 SRC=$(wildcard *.cpp)

@@ -7,6 +7,7 @@ Ecran::Ecran():ej(etapeJeu::menu){
     exit(0);
   }
   //load images
+  populateImages();
 }
 
 Ecran::~Ecran(){
@@ -66,6 +67,19 @@ bool Ecran::init(int x, int y){
 
   return true;
 }
+
+std::shared_ptr<Image> Ecran::getImage(const NomImage& ni) {
+	return images[ni];
+}
+
+SDL_Renderer* Ecran::getRenderer() {
+	return renderer;
+}
+
+void Ecran::populateImages() {
+	images.insert(std::pair{NomImage::Siren, std::make_shared<Image>(getRenderer(), std::vector{std::string{"images/sirene.png"}}, 100)});
+}
+
 
 long int getTime(){
   struct timespec tms;
