@@ -5,7 +5,7 @@
 #include "vecteur2.hxx"
 
 
-namespace psa::geometrie
+namespace geometrie
 {
 
 	// Operations Vecteur Point

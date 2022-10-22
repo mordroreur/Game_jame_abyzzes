@@ -7,7 +7,7 @@
 #include <string>
 
 
-namespace psa::geometrie {
+namespace geometrie {
 template <typename T>
 std::string toString(const Vecteur2<T>& v) {
 	return "["+std::to_string(v.x)+"; "+std::to_string(v.y)+"]";

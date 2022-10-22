@@ -3,7 +3,7 @@
 
 #include <math.h>
 
-namespace psa::geometrie {
+namespace geometrie {
 	template <typename T>
 	struct PointXY {
 		T x;
