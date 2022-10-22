@@ -3,6 +3,6 @@
 
 #include "windowManager.h"
 
-void startMainBoucle(Ecran *ec);
+void startMainBoucle(Ecran *ec, int deltaTime);
 
 #endif

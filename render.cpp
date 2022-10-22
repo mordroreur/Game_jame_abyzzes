@@ -7,7 +7,7 @@
 
 long int TimeCount;
 
-void Affichage(Ecran *ec){
+void Affichage(Ecran *ec, int deltaTime){
   
 }
 
@@ -28,18 +28,17 @@ void boucleAffichage(Ecran *ec){
     NowTime = getTime();
 
     /* Gestion des verif gameplay */
-    if (NowTime - LastFrame > timeForNewFrame) {
+    int deltaTime = NowTime - LastFrame;
+    if (deltaTime > timeForNewFrame) {
 
-      Affichage(ec);
+      Affichage(ec, deltaTime);
       
       LastFrame += timeForNewFrame;
       frameCount++;
     }else{
       /* Endors le cpu pour garder de la ressource */
-      NowTime = getTime();
-      
       long SleepForCPU = 0;
-      SleepForCPU = (long)(timeForNewFrame - (NowTime - LastFrame)) / 300;
+      SleepForCPU = (long)(timeForNewFrame - (deltaTime)) / 300;
       SDL_Delay(SleepForCPU);
     }
   }
@@ -70,20 +69,19 @@ void startMainBoucle(Ecran *ec){
     NowTime = getTime();
 
     /* Gestion des verif gameplay */
-    if (NowTime - LastTick > timeForNewTick) {
+    int delatTime = NowTime - LastTick;
+    if (delatTime > timeForNewTick) {
 
       
 
-      ticks(ec);
+      ticks(ec, delatTime);
       
       LastTick += timeForNewTick;
       tickCount++;
     }else{
       /* Endors le cpu pour garder de la ressource */
-      NowTime = getTime();
-      
       long SleepForCPU = 0;
-      SleepForCPU = (long)(timeForNewTick - (NowTime - LastTick)) / 300;
+      SleepForCPU = (long)(timeForNewTick - (delatTime)) / 300;
       SDL_Delay(SleepForCPU);
     }
 

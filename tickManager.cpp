@@ -1,6 +1,6 @@
 #include "windowManager.h"
 #include "tickManager.h"
 
-void ticks(Ecran *ec){
+void ticks(Ecran *ec, int deltaTime){
   
 }
