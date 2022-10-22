@@ -2,18 +2,36 @@
 #include "windowManager.h"
 #include "tickManager.h"
 #include "render.h"
+#include "coordConverter.hpp"
 #include <iostream>
 #include <mutex>
-
 
 static std::mutex mutexDo;
 long int TimeCount;
 
+SDL_Rect camRectFromPlayerRect(const SDL_Rect& playerRect, const float aspectRatio) {
+	int w = 1200;
+	int h = w*aspectRatio;
+	return {playerRect.x-w/2,playerRect.y-h/2,w,h};
+}
+
 void Affichage(std::shared_ptr<Ecran> ec, int deltaTime){
-	
 	auto* renderer = ec->getRenderer();
+
+	SDL_Rect playerRect {2000, 2000, 100,200};
+	SDL_Rect windowRect = ec->getWindowRect();
+	SDL_Rect camRect = camRectFromPlayerRect(playerRect, ((float)windowRect.h)/windowRect.w);
+	SDL_Rect camRectInWindow {0,0,windowRect.w, windowRect.h};
+	
+
 	SDL_RenderClear(renderer);
-	ec->getImage(NomImage::Siren)->draw(renderer, {10, 10, 500, 500});
+	const auto rect = worldToCam(playerRect, camRect, camRectInWindow);
+	
+	if (rect.has_value()) {
+		ec->getImage(NomImage::Siren)->draw(renderer, rect.value());
+		//ec->getImage(NomImage::Siren)->draw(renderer, SDL_Rect{10,10, 100,100});
+		
+	}
 
 	SDL_RenderPresent(renderer);
 }
@@ -77,9 +95,6 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 		/* Gestion des verif gameplay */
 		int delatTime = NowTime - LastTick;
 		if (delatTime > timeForNewTick) {
-
-			
-
 			std::scoped_lock l(mutexDo);
 			ticks(ec, delatTime);
 			

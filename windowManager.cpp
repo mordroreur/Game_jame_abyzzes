@@ -70,6 +70,13 @@ bool Ecran::init(int x, int y){
   return true;
 }
 
+
+SDL_Rect Ecran::getWindowRect() {
+	int w,h;
+	SDL_GetWindowSize(window, &w, &h);
+	return {0,0,w,h};
+}
+
 std::shared_ptr<Image> Ecran::getImage(const NomImage& ni) {
 	return images[ni];
 }
