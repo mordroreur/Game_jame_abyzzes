@@ -64,7 +64,7 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 			//LastFpsCount = fpsCount;
 			//LastTickCount = tickCount;
 			//printf("%d images cette seconde et %d ticks\n", fpsCount, tickCount);
-			std::cout << "Frame : " << frameCount << " Ticks : " << tickCount << std::endl;
+			//std::cout << "Frame : " << frameCount << " Ticks : " << tickCount << std::endl;
 			frameCount = 0;
 			tickCount = 0;
 		}
