@@ -13,7 +13,7 @@ class Base : public GameObject , public HealthGainable, public HealthLosable
 
 private:
     short int health;
-}
+};
 
 
 
