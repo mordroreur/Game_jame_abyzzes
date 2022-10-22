@@ -5,11 +5,11 @@
 #include "GameObject.hpp"
 #include "geometrie/geometrie.hxx"
 #include "HealthGainable.hpp"
+#include "HealthLosable.hpp"
 
 
 
-class Base : public GameObject , public HealthGainable, public HealthLosable
-{
+class Base : public GameObject , public HealthGainable, public HealthLosable{
 
 private:
     short int health;
