@@ -21,8 +21,10 @@ public :
   std::shared_ptr<Image> getImage(const NomImage& ni);
   SDL_Renderer* getRenderer();
   SDL_Rect getWindowRect();
-private:
+
   int sizex, sizey;
+private:
+
   
   SDL_Window *window;
   SDL_Renderer *renderer;
