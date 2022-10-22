@@ -5,7 +5,7 @@
 #include <math.h>
 #include <numbers>
 
-namespace psa::geometrie
+namespace geometrie
 {
 
 	template <typename T, typename Angle, typename Distance=double>

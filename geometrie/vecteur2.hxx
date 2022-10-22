@@ -3,7 +3,7 @@
 
 #include <math.h>
 
-namespace psa::geometrie
+namespace geometrie
 {
 	template <typename T>
 	struct Vecteur2
@@ -109,7 +109,7 @@ namespace psa::geometrie
 
 namespace std {
 template <typename T>
-constexpr psa::geometrie::Vecteur2<T> abs(const psa::geometrie::Vecteur2<T>& v) {
+constexpr geometrie::Vecteur2<T> abs(const geometrie::Vecteur2<T>& v) {
 	return {abs(v.x), abs(v.y)};
 }
 }
