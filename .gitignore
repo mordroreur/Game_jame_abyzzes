@@ -1,5 +1,7 @@
 *.o
-res
-res.exe
 images/*.kra
 images/*.kra~
+app
+app.exe
+.kra
+.kra~
