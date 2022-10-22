@@ -15,12 +15,12 @@ void Entity::move()
 
 
 
-void updateSpeed(int newSpeed)
+void Entity::updateSpeed(int newSpeed)
 {
     speed = newSpeed;
 }
 
-void updateDirection(geometrie::Vecteur2<int> newDirection)
+void Entity::updateDirection(geometrie::Vecteur2<int> newDirection)
 {
     direction = newDirection;
 }
