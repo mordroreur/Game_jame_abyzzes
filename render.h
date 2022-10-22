@@ -3,6 +3,7 @@
 
 #include "windowManager.h"
 
-void startMainBoucle(std::shared_ptr<Ecran> ec);
+
+void boucleAffichage(std::shared_ptr<Ecran> ec, int *frameCount);
 
 #endif
