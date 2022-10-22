@@ -20,7 +20,7 @@ protected:
        
 public:
     GameObject(/* args */);
-    virtual void update(int delta) = 0;
+    void update(int delta);
 
     std::shared_ptr<Image> getImage();
     SDL_Rect getRect();

@@ -11,5 +11,5 @@ private:
 public:
     void gainHealth(short int amountLost) override;
     void setInput(Input newInput);
-    void update(int delta) override;
+    void update(int delta);
 };

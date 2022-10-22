@@ -15,5 +15,5 @@ public:
 
     void loseHealth(short int amountLost) override;
 
-    void update(int delta) override;
+    void update(int delta);
 };
