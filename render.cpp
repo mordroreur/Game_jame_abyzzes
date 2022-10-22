@@ -1,23 +1,101 @@
+#include <thread>
 #include "windowManager.h"
 #include "tickManager.h"
 #include "render.h"
+#include <iostream>
 
+
+long int TimeCount;
 
 void Affichage(Ecran *ec){
   
 }
 
+int tickCount;
+int frameCount;
+
+void boucleAffichage(Ecran *ec){
+  long int LastFrame;
+  long int timeForNewFrame = 1000000 / 60;
+  long int NowTime;
+
+  frameCount = 0;
+  NowTime = getTime();
+  LastFrame = getTime();
+
+  while(ec->ej != etapeJeu::fin){
+
+    NowTime = getTime();
+
+    /* Gestion des verif gameplay */
+    if (NowTime - LastFrame > timeForNewFrame) {
+
+      Affichage(ec);
+      
+      LastFrame += timeForNewFrame;
+      frameCount++;
+    }else{
+      /* Endors le cpu pour garder de la ressource */
+      NowTime = getTime();
+      
+      long SleepForCPU = 0;
+      SleepForCPU = (long)(timeForNewFrame - (NowTime - LastFrame)) / 300;
+      SDL_Delay(SleepForCPU);
+    }
+  }
+}
 
 
 
 void startMainBoucle(Ecran *ec){
   
   SDL_Event event;
+
+  long int LastTick;
+  long int timeForNewTick = 1000000 / 60;
+  long int NowTime;
+
+  
+  tickCount = 0;
+  TimeCount = getTime();
+  
+  NowTime = getTime();
+  LastTick = getTime();
+  
+
+  std::thread draw (boucleAffichage, ec);
   
   while(ec->ej != etapeJeu::fin){
-    Affichage(ec);
-    ticks(ec);
 
+    NowTime = getTime();
+
+    /* Gestion des verif gameplay */
+    if (NowTime - LastTick > timeForNewTick) {
+
+      
+
+      ticks(ec);
+      
+      LastTick += timeForNewTick;
+      tickCount++;
+    }else{
+      /* Endors le cpu pour garder de la ressource */
+      NowTime = getTime();
+      
+      long SleepForCPU = 0;
+      SleepForCPU = (long)(timeForNewTick - (NowTime - LastTick)) / 300;
+      SDL_Delay(SleepForCPU);
+    }
+
+    if (NowTime > TimeCount) {
+      TimeCount += 1000000;
+      //LastFpsCount = fpsCount;
+      //LastTickCount = tickCount;
+      //printf("%d images cette seconde et %d ticks\n", fpsCount, tickCount);
+      //std::cout << "Frame : " << frameCount << " Ticks : " << tickCount << std::endl;
+      frameCount = 0;
+      tickCount = 0;
+    }
 
     while (SDL_PollEvent(&event))
     {
@@ -66,4 +144,5 @@ void startMainBoucle(Ecran *ec){
       }
     }
   }
+  draw.join();
 }

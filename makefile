@@ -1,6 +1,6 @@
 CC=g++
 
-LDFLAG=$(shell sdl2-config --libs) -lm -lSDL2_ttf -lpthread -D_REENTRANT -lSDL2_image
+LDFLAG=$(shell sdl2-config --libs) -lSDL2_ttf -lpthread -lSDL2_image
 CFLAG=$(shell sdl2-config --cflags) -Wall -Wextra -g
 
 EXEC=app

@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <time.h>
 #include "windowManager.h"
 
 Ecran::Ecran():ej(etapeJeu::menu){
@@ -74,4 +75,12 @@ Image Ecran::loadImage(const std::string &path){
 
 void Ecran::DrawImage(Image *im, float x, float y, float sizeX, float sizeY, char center, int etatPremier, float TimebeforeNext, int flip, int angle){
   
+}
+
+long int getTime(){
+  struct timespec tms;
+  if (clock_gettime(CLOCK_REALTIME,&tms)) {
+        return -1;
+    }
+  return ((tms.tv_sec*1000000) + (tms.tv_nsec/1000));
 }
