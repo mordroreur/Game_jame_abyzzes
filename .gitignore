@@ -1,5 +1,5 @@
 *.o
 res
 res.exe
-.kra
-.kra~
+images/*.kra
+images/*.kra~
