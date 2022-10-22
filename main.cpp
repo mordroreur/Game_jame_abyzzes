@@ -7,6 +7,6 @@ int main(int, char*[]){
   Ecran ec;
 
   startMainBoucle(&ec);
-
+  
   return 0;
 }

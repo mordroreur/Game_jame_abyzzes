@@ -8,12 +8,6 @@
 
 enum class etapeJeu {fin, menu};
 
-class Image{
- public:
-  std::vector<SDL_Texture *> text;
-  int nbImageX, nbImageY, offsetX, offsetY, totalImageNb;
-};
-
 class Ecran{
 public :
   Ecran();
@@ -25,10 +19,9 @@ private:
   
   SDL_Window *window;
   SDL_Renderer *renderer;
-  std::vector<Image> imlist;
+  std::vector<std::Image> imlist;
   
   bool init(int x, int y);
-  Image loadImage(const std::string &path);
   void DrawImage(Image *im, float x, float y, float sizeX, float sizeY, char center, int etatPremier, float TimebeforeNext, int flip, int angle);
 };
 
