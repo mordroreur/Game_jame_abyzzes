@@ -9,6 +9,8 @@
 #include <memory>
 #include "nom_images.hpp"
 #include "image.hpp"
+#include "GameObject.hpp"
+#include "Player.hpp"
 
 enum class etapeJeu {fin, menu};
 
@@ -22,6 +24,8 @@ public :
   SDL_Renderer* getRenderer();
   SDL_Rect getWindowRect();
 
+  std::vector<std::shared_ptr<GameObject>> gameObjects;
+  std::shared_ptr<Player> player;
   int sizex, sizey;
 private:
 
@@ -32,6 +36,8 @@ private:
   bool init(int x, int y);
   void populateImages();
   std::map<NomImage, std::shared_ptr<Image>> images;
+
+  void constructPlayer();
 };
 
 long int getTime();

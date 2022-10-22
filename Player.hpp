@@ -11,10 +11,9 @@ private:
 
 public:
 
-    Player(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, Input inp ,int w, int h) 
-    : Entity(p, im, w, h)
+    Player(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, int w, int h) 
+    : Entity(p, im, w, h), input{}
     {
-        input = inp;
     }
 
     void gainHealth(short int amountLost) override;

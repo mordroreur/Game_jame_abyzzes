@@ -5,9 +5,9 @@
 
 
 struct Input{
-  geometrie::Vecteur2<int> direction;
-  geometrie::Vecteur2<int> shoot;
-  bool power;
+  geometrie::Vecteur2<int> direction = geometrie::Vecteur2<int>{0,0};
+  geometrie::Vecteur2<int> shoot = geometrie::Vecteur2<int>{0,0};
+  bool power = false;
 };
 
 #endif

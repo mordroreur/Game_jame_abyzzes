@@ -23,20 +23,21 @@ SDL_Rect camRectFromPlayerRect(const SDL_Rect& playerRect, const float aspectRat
 void Affichage(std::shared_ptr<Ecran> ec, int deltaTime){
 	auto* renderer = ec->getRenderer();
 
-	SDL_Rect playerRect {2000, 2000, 100,200};
+	SDL_Rect playerRect = ec->player->getRect();
 	SDL_Rect windowRect = ec->getWindowRect();
 	SDL_Rect camRect = camRectFromPlayerRect(playerRect, ((float)windowRect.h)/windowRect.w);
-	SDL_Rect camRectInWindow {0,0,windowRect.w, windowRect.h};
 	
 
 	SDL_RenderClear(renderer);
-	const auto rect = worldToCam(playerRect, camRect, camRectInWindow);
-	
-	if (rect.has_value()) {
-		ec->getImage(NomImage::Siren)->draw(renderer, rect.value());
-		//ec->getImage(NomImage::Siren)->draw(renderer, SDL_Rect{10,10, 100,100});
+
+	for (auto go : ec->gameObjects) {
+		const auto rect = worldToCam(go->getRect(), camRect, windowRect);
 		
+		if (rect.has_value()) {
+			go->getImage()->draw(renderer, rect.value());
+		}
 	}
+	
 
 	SDL_RenderPresent(renderer);
 }

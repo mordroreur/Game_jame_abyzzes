@@ -8,6 +8,8 @@ Ecran::Ecran():ej(etapeJeu::menu){
   }
   //load images
   populateImages();
+
+  constructPlayer();
 }
 
 Ecran::~Ecran(){
@@ -68,6 +70,10 @@ bool Ecran::init(int x, int y){
   return true;
 }
 
+void Ecran::constructPlayer() {
+	player = std::make_shared<Player>(geometrie::Vecteur2<int>{100,100}, getImage(NomImage::Siren), 100,200);
+	gameObjects.push_back(player);
+}
 
 SDL_Rect Ecran::getWindowRect() {
 	int w,h;
