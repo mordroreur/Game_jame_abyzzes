@@ -20,8 +20,9 @@ public :
   etapeJeu ej;
   std::shared_ptr<Image> getImage(const NomImage& ni);
   SDL_Renderer* getRenderer();
-private:
   int sizex, sizey;
+private:
+
   
   SDL_Window *window;
   SDL_Renderer *renderer;

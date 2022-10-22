@@ -1,10 +1,14 @@
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_keycode.h>
 #include <thread>
+#include "geometrie/vecteur2.hxx"
 #include "windowManager.h"
 #include "tickManager.h"
 #include "render.h"
 #include <iostream>
 #include <mutex>
-
+#include "Input.hpp"
+#include "geometrie/geometrie.hxx"
 
 static std::mutex mutexDo;
 long int TimeCount;
@@ -54,7 +58,10 @@ void boucleAffichage(std::shared_ptr<Ecran> ec){
 
 
 void startMainBoucle(std::shared_ptr<Ecran> ec){
-	
+  bool dep[4] = {false, false, false, false};
+  bool powerOn = false;
+
+  
 	SDL_Event event;
 
 	long int LastTick;
@@ -102,14 +109,33 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 			tickCount = 0;
 		}
 
+                Input tempory;
+                tempory.shoot = geometrie::Vecteur2<int>{0, 0};
+                                
 		while (SDL_PollEvent(&event))
 		{
 			switch (event.type)
 			{
 			case SDL_KEYDOWN:
-                          std::cout << event.key.keysym.sym << std::endl;
+                          //std::cout << event.key.keysym.sym << std::endl;
+                          switch (event.key.keysym.sym) {
+                          case SDLK_SPACE: powerOn = true;break;
+                          case SDLK_z: dep[0] = true;break;//haut
+                          case SDLK_d: dep[1] = true;break;//droite
+                          case SDLK_s: dep[2] = true;break;//bas
+                          case SDLK_q: dep[3] = true;break;//gauche
+                          default:break;
+                          }
 				break;
 			case SDL_KEYUP:
+                          switch (event.key.keysym.sym) {
+                          case SDLK_SPACE: powerOn = false;break;
+                          case SDLK_z: dep[0] = false;break;//haut
+                          case SDLK_d: dep[1] = false;break;//droite
+                          case SDLK_s: dep[2] = false;break;//bas
+                          case SDLK_q: dep[3] = false;break;//gauche
+                          default:break;
+                          }
 		//if(event.key.keysym.sym == SDLK_F11){
 				break;
 			case SDL_MOUSEWHEEL:
@@ -119,10 +145,13 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				if (event.button.button == SDL_BUTTON_LEFT) {
-			//LeftClick(screen);
+                                  int posMX, posMY;
+                                  SDL_GetMouseState(&posMX, &posMY);
+                                  tempory.shoot = geometrie::Vecteur2<int>{posMX - (ec->sizex/2), posMY - (ec->sizey/2)};
+                                  tempory.shoot = geometrie::normalized(tempory.shoot);
 				} else if (event.button.button == SDL_BUTTON_RIGHT) {
-			//RightClick(screen);
-		}
+                                  //
+                                }
 				break;
 			case SDL_QUIT:
 				ec->ej = etapeJeu::fin;
@@ -148,6 +177,9 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 				break;
 			}
 		}
+                tempory.direction = geometrie::Vecteur2<int>{dep[1] + (-1)*dep[3], dep[2] + (-1)*dep[0]};
+                tempory.power = powerOn;
+                
 	}
 	drawThread.join();
 }

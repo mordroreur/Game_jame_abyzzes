@@ -4,10 +4,10 @@
 #include "geometrie/geometrie.hxx"
 
 
-struct{
+struct Input{
   geometrie::Vecteur2<int> direction;
   geometrie::Vecteur2<int> shoot;
   bool power;
-}Input;
+};
 
 #endif
