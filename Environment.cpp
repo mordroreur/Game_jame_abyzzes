@@ -2,7 +2,13 @@
 #include "geometrie/string.hxx"
 #include <iostream>
 
-void Environment::update(int delat) { move(); }
+void Environment::update(int delat) {
+  move();
+  lifeTime--;
+  if(lifeTime == 0){
+    //////////////////DEEEEEESSSSSTRRRRRRROOOOOOYYY
+  }
+}
 
 void Environment::reactCollision(std::shared_ptr<GameObject> other){
   //std::cout << geometrie::toString(other->getPosition()) << std::endl;
