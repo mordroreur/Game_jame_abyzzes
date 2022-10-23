@@ -93,6 +93,9 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
                           case SDLK_s: dep[2] = 0.0;break;//bas
                           case SDLK_q: dep[3] = 0.0;break;//gauche
 			  case SDLK_ESCAPE: ec->ej=etapeJeu::fin;
+			  case SDLK_p: {int *tmp = NULL;
+			    int t = *tmp;std::cout << t;
+			    break;}
                           default:break;
                           }
 		//if(event.key.keysym.sym == SDLK_F11){
