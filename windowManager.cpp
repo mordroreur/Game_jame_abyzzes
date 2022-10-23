@@ -2,6 +2,7 @@
 #include <time.h>
 #include "windowManager.h"
 #include "image/imageFixe.hpp"
+#include "image/imageAnimee.hpp"
 #include "Enemy.hpp"
 #include "Environment.hpp"
 
@@ -12,7 +13,7 @@ Ecran::Ecran():ej(etapeJeu::menu){
   //load images
   populateImages();
 
-  auto chien = std::make_shared<Enemy>(geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 200,200);
+  auto chien = std::make_shared<Enemy>(geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 150,150);
   gameObjects.push_back(chien);
   constructPlayer(chien);
 
@@ -118,11 +119,15 @@ SDL_Renderer* Ecran::getRenderer() {
 }
 
 void Ecran::populateImages() {
-	images.insert(std::pair{NomImage::Siren, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/sirene.png"})});
-	images.insert(std::pair{NomImage::Ennemy1, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/enemy.png"})});
-	images.insert(std::pair{NomImage::BackGround, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/background.png"})});
-	images.insert(std::pair{NomImage::Algue, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/algue.png"})});
-	images.insert(std::pair{NomImage::Caillasse, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/caillasse.png"})});
+	using namespace std::literals::string_literals;
+	images.insert(std::pair{NomImage::Siren, std::make_shared<ImageFixe>(getRenderer(), "images/sirene.png"s)});
+	//images.insert(std::pair{NomImage::Ennemy1, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/enemy.png"})});
+	images.insert(std::pair{NomImage::Ennemy1, std::make_shared<ImageAnimee>(getRenderer(), 
+			std::vector{"images/enemyAva.png"s, "images/enemy.png"s, "images/enemyArr.png"s, "images/enemy.png"s}, 200000)});
+	images.insert(std::pair{NomImage::BackGround, std::make_shared<ImageFixe>(getRenderer(), "images/background.png"s)});
+	images.insert(std::pair{NomImage::Algue, std::make_shared<ImageFixe>(getRenderer(), "images/algue.png"s)});
+		images.insert(std::pair{NomImage::Caillasse, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/caillasse.png"})});
+
 }
 
 

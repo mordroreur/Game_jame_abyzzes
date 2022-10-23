@@ -8,7 +8,7 @@ class ImageAnimee : public Image {
 	ImageAnimee(SDL_Renderer* renderer, const std::vector<std::string>& paths, int timeByFrame);
 	~ImageAnimee();
 
-	void draw(SDL_Renderer* renderer, const SDL_Rect& destination, unsigned int deltaTime = 0) override;
+	void draw(SDL_Renderer* renderer, const SDL_Rect& destination, bool faceLeft=false, unsigned int deltaTime = 0) override;
 
 	private:
 	std::vector<SDL_Texture*> textures;

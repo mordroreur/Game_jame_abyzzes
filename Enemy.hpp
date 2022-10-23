@@ -15,6 +15,8 @@ public:
 	void add_cible(std::weak_ptr<GameObject> cible);
 	void reactCollision(std::shared_ptr<GameObject> other) override;
 	void set_player(std::shared_ptr<GameObject> player_);
+	bool isPorteur() override {return true;}
+
 private:
 	std::vector<std::weak_ptr<GameObject>> cibles;
 	std::shared_ptr<GameObject> player;

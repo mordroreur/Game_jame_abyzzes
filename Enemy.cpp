@@ -6,7 +6,7 @@
 #include <algorithm>
 
 Enemy::Enemy(geometrie::Vecteur2<float> position_, std::shared_ptr<Image> image_, int width_, int height_)
-	: Entity{position_, image_, width_, height_, 5, 5}
+	: Entity{position_, image_, width_, height_, 10, 5}
 {
 }
 
