@@ -11,7 +11,7 @@ Ecran::Ecran():ej(etapeJeu::menu){
   //load images
   populateImages();
 
-  auto chien = std::make_shared<Enemy>(std::vector<std::shared_ptr<GameObject>>{}, geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 200,200);
+  auto chien = std::make_shared<Enemy>(std::vector<std::weak_ptr<GameObject>>{}, geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 200,200);
   gameObjects.push_back(chien);
   constructPlayer(chien);
 }
@@ -75,14 +75,15 @@ bool Ecran::init(int x, int y){
 
 void Ecran::supprimerObjets() {
 	for (auto o : objetsASupprimer) {
-		std::remove(gameObjects.begin(), gameObjects.end(), o);
+		auto last = std::remove(gameObjects.begin(), gameObjects.end(), o);
+		gameObjects.erase(last, gameObjects.end());
 	}
 }
 
 void Ecran::constructPlayer(std::shared_ptr<Enemy> chien) {
   player = std::make_shared<Player>([this, chien](std::shared_ptr<GameObject> go){
 	gameObjects.push_back(go);
-	chien->add_cible(go);
+	chien->add_cible(std::weak_ptr{go});
   },
   [this](std::shared_ptr<GameObject> go){
 		objetsASupprimer.push_back(go);
@@ -91,7 +92,7 @@ void Ecran::constructPlayer(std::shared_ptr<Enemy> chien) {
 	getImage(NomImage::Algue),
   	geometrie::Vecteur2<float>{100.0,100.0}, getImage(NomImage::Siren), 100,200);
 	gameObjects.push_back(player);
-	chien->add_cible(player);
+	chien->add_cible(std::weak_ptr{player});
 }
 
 SDL_Rect Ecran::getWindowRect() {

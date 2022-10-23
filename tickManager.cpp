@@ -17,7 +17,9 @@ void gestionCollision(std::shared_ptr<Ecran> ec, int deltaTime) {
 
 void ticks(std::shared_ptr<Ecran> ec, int deltaTime){
   for (auto go : ec->gameObjects) {
-    go->update(deltaTime);
+	if (go) {
+    	go->update(deltaTime);
+	}
   }
 
 	gestionCollision(ec, deltaTime);

@@ -2,7 +2,8 @@
 #include <iostream>
 #include "geometrie/string.hxx"
 #include "algue.hpp"
-#include "logger.h"
+#include <algorithm>
+
 
 void Player::gainHealth(short int amountLost) 
 {
@@ -24,16 +25,9 @@ void Player::setInput(Input newInput)
 void Player::reactCollision(std::shared_ptr<GameObject> other) {
 	auto sizeBefore = algues.size();
 	
-	std::vector<decltype(algues)::iterator> v;
-	for (auto i = algues.begin(); i != algues.end(); ++i) {
-		log(std::to_string(*i==other));
-		if (*i==other){
-			v.push_back(i);
-		}
-	}
-
-	for (auto i : v) {
-		algues.erase(i);
+	auto last = std::remove(algues.begin(), algues.end(), other);
+	algues.erase(last, std::end(algues));
+	if (algues.size() < sizeBefore) {
 		removeObject(other);
 	}
 }

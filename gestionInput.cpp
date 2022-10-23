@@ -44,15 +44,9 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 		/* Gestion des verif gameplay */
 		int delatTime = NowTime - LastTick;
 		if (delatTime > timeForNewTick) {
-
-			
-
 			std::scoped_lock l(mutexDo);
-
-
 			
 			ticks(ec, delatTime);
-
 			
 			LastTick += timeForNewTick;
 			tickCount++;

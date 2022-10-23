@@ -46,10 +46,12 @@ void Affichage(std::shared_ptr<Ecran> ec, int deltaTime){
 	}
 	
 	for (auto go : ec->gameObjects) {
-		const auto rect = worldToCam(go->getRect(), camRect, windowRect);
-		
-		if (rect.has_value()) {
-			go->getImage()->draw(renderer, rect.value());
+		if (go) {
+			const auto rect = worldToCam(go->getRect(), camRect, windowRect);
+			
+			if (rect.has_value()) {
+				go->getImage()->draw(renderer, rect.value());
+			}
 		}
 	}
 	
