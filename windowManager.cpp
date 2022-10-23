@@ -3,6 +3,7 @@
 #include "windowManager.h"
 #include "image/imageFixe.hpp"
 #include "Enemy.hpp"
+#include "Environment.hpp"
 
 Ecran::Ecran():ej(etapeJeu::menu){
   if(!init(1080, 750)){
@@ -14,6 +15,10 @@ Ecran::Ecran():ej(etapeJeu::menu){
   auto chien = std::make_shared<Enemy>(std::vector<std::weak_ptr<GameObject>>{}, geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 200,200);
   gameObjects.push_back(chien);
   constructPlayer(chien);
+
+
+  auto cailloux = std::make_shared<Environment>(geometrie::Vecteur2<float>{200.0,150.0}, getImage(NomImage::Ennemy1), 200,200, 10.0, 20);
+  gameObjects.push_back(cailloux);
 }
 
 Ecran::~Ecran(){
