@@ -4,9 +4,9 @@
 
 void Environment::update(int delat) {
   move();
-  lifeTime--;
+  lifeTime -= delat;
   if(lifeTime == 0){
-    //////////////////DEEEEEESSSSSTRRRRRRROOOOOOYYY
+	removeObject(this);
   }
 }
 
