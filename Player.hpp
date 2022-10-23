@@ -20,7 +20,7 @@ public:
 				std::function<void(std::shared_ptr<GameObject>)> removeObject_,
 				std::shared_ptr<Image> imageAlgue_,
 					 geometrie::Vecteur2<float> p, std::shared_ptr<Image> im, int w, int h) 
-    : Entity(p, im, w, h, 12, 100), input{}, addObject{addObject_}, imageAlgue{imageAlgue_}, removeObject {removeObject_}
+    : Entity(p, im, w, h, 6, 100), input{}, addObject{addObject_}, imageAlgue{imageAlgue_}, removeObject {removeObject_}
     {
     }
 

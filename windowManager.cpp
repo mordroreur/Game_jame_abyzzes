@@ -12,7 +12,7 @@ Ecran::Ecran():ej(etapeJeu::menu){
   //load images
   populateImages();
 
-  auto chien = std::make_shared<Enemy>(geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 200,200);
+  auto chien = std::make_shared<Enemy>(geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 150,150);
   gameObjects.push_back(chien);
   constructPlayer(chien);
 }

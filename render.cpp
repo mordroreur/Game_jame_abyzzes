@@ -15,7 +15,7 @@
 
 
 SDL_Rect camRectFromPlayerRect(const SDL_Rect& playerRect, const float aspectRatio) {
-	int w = 1200;
+	int w = 2000;
 	int h = w*aspectRatio;
 	return {playerRect.x-w/2,playerRect.y-h/2,w,h};
 }
@@ -25,14 +25,15 @@ void Affichage(std::shared_ptr<Ecran> ec, int deltaTime){
 
 	SDL_Rect playerRect = ec->player->getRect();
 	SDL_Rect windowRect = ec->getWindowRect();
-	SDL_Rect camRect = camRectFromPlayerRect(playerRect, ((float)windowRect.h)/windowRect.w);
+	const auto aspectRatio = ((float)windowRect.h)/windowRect.w;
+	SDL_Rect camRect = camRectFromPlayerRect(playerRect, aspectRatio);
 	
 
 	SDL_RenderClear(renderer);
 
 	
-	int scaleY = 1;
-	int scaleX = 4*scaleY;
+	float scaleX = 2;
+	float scaleY = aspectRatio*scaleX;
 	
 	int screenStartx = (camRect.x < 0)?-ec->sizex*scaleX+(-camRect.x%ec->sizex*scaleX):(-camRect.x%ec->sizex*scaleX);
 	int screenStarty = (camRect.y < 0)?-ec->sizey*scaleY+(-camRect.y%ec->sizey*scaleY):(-camRect.y%ec->sizey*scaleY);
