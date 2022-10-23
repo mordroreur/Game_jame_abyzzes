@@ -4,7 +4,8 @@
 enum class NomImage {
 	Siren,
 	Ennemy1,
-	BackGround
+	BackGround,
+	Algue
 };
 
 #endif //NOM_IMAGE_H_INCLUDED

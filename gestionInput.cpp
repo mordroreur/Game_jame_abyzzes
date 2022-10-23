@@ -123,7 +123,6 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
                                   int posMX, posMY;
                                   SDL_GetMouseState(&posMX, &posMY);
                                   tempory.shoot = geometrie::Vecteur2<float>{posMX - (ec->sizex/2.0), posMY - (ec->sizey/2.0)};
-                                  tempory.shoot = geometrie::normalized(tempory.shoot);
 				} else if (event.button.button == SDL_BUTTON_RIGHT) {
                                   //
                                 }

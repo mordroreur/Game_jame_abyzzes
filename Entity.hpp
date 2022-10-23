@@ -10,10 +10,11 @@ class Entity : public GameObject , public Movable , public HealthLosable
 {
 public:
 	
-    Entity(geometrie::Vecteur2<float> position, std::shared_ptr<Image> image, int width, int height, short int speed, short int health);
+    Entity(geometrie::Vecteur2<float> position, std::shared_ptr<Image> image,
+			int width, int height, float speed, short int health);
 
     geometrie::Vecteur2<float> direction = geometrie::Vecteur2<float>{0.0,0.0};
-    short int speed;
+    float speed;
     short int health;
 
 

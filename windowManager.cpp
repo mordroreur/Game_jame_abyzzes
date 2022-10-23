@@ -11,8 +11,9 @@ Ecran::Ecran():ej(etapeJeu::menu){
   //load images
   populateImages();
 
-  constructPlayer();
-  gameObjects.push_back(std::make_shared<Enemy>(std::vector<std::shared_ptr<GameObject>>{player}, geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 200,200));
+  auto chien = std::make_shared<Enemy>(std::vector<std::shared_ptr<GameObject>>{}, geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 200,200);
+  gameObjects.push_back(chien);
+  constructPlayer(chien);
 }
 
 Ecran::~Ecran(){
@@ -21,7 +22,6 @@ Ecran::~Ecran(){
 }
 
 bool Ecran::init(int x, int y){
-
   sizex = x;
   sizey = y;
   
@@ -73,9 +73,15 @@ bool Ecran::init(int x, int y){
   return true;
 }
 
-void Ecran::constructPlayer() {
-  player = std::make_shared<Player>(geometrie::Vecteur2<float>{100.0,100.0}, getImage(NomImage::Siren), 100,200);
+void Ecran::constructPlayer(std::shared_ptr<Enemy> chien) {
+  player = std::make_shared<Player>([this, chien](std::shared_ptr<GameObject> go){
+	gameObjects.push_back(go);
+	chien->add_cible(go);
+  }, 
+	getImage(NomImage::Algue),
+  	geometrie::Vecteur2<float>{100.0,100.0}, getImage(NomImage::Siren), 100,200);
 	gameObjects.push_back(player);
+	chien->add_cible(player);
 }
 
 SDL_Rect Ecran::getWindowRect() {
@@ -96,6 +102,7 @@ void Ecran::populateImages() {
 	images.insert(std::pair{NomImage::Siren, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/sirene.png"})});
 	images.insert(std::pair{NomImage::Ennemy1, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/enemy.png"})});
 	images.insert(std::pair{NomImage::BackGround, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/background.png"})});
+	images.insert(std::pair{NomImage::Algue, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/algue.png"})});
 }
 
 

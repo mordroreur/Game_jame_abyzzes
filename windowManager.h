@@ -11,6 +11,7 @@
 #include "image/image.hpp"
 #include "GameObject.hpp"
 #include "Player.hpp"
+#include "Enemy.hpp"
 
 enum class etapeJeu {fin, menu};
 
@@ -40,7 +41,7 @@ private:
   void populateImages();
   std::map<NomImage, std::shared_ptr<Image>> images;
 
-  void constructPlayer();
+  void constructPlayer(std::shared_ptr<Enemy> chien);
 };
 
 long int getTime();
