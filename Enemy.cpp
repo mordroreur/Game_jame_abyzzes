@@ -9,10 +9,14 @@ Enemy::Enemy(std::vector<std::shared_ptr<GameObject>> cibles_, geometrie::Vecteu
 {
 }
 
+void Enemy::add_cible(std::shared_ptr<GameObject> cible) {
+	cibles.push_back(cible);
+}
+
 void Enemy::update(int delta)
 {
 	using namespace geometrie;
-	auto cible = cibles.front();/*std::min(cibles.begin(), cibles.end(), [this](auto& a, auto& b) { 
+	auto cible = cibles.back();/*std::min(cibles.begin(), cibles.end(), [this](auto& a, auto& b) { 
 		return longueurCarree<float>((*a)->getPosition() - position) < longueurCarree<float>((*b)->getPosition() - position);
 		});
 	if (cible == std::end(cibles)) {
