@@ -5,7 +5,7 @@
 #include <iostream>
 
 Enemy::Enemy(std::vector<std::shared_ptr<GameObject>> cibles_, geometrie::Vecteur2<float> position_, std::shared_ptr<Image> image_, int width_, int height_)
-	: Entity{position_, image_, width_, height_, 15, 5}, cibles {cibles_}
+	: Entity{position_, image_, width_, height_, 5, 5}, cibles {cibles_}
 {
 }
 
@@ -19,6 +19,9 @@ void Enemy::update(int delta)
 		direction.x = 1;
 		return;
 		}*/
-	direction = vecteur2From<float>((cible)->getPosition() - position);
-	log("arr");
+	direction = (cible)->getPosition() - position;
+	log("E");
+	log(direction);
+
+	move();
 }

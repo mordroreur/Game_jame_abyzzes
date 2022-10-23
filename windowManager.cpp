@@ -12,7 +12,7 @@ Ecran::Ecran():ej(etapeJeu::menu){
   populateImages();
 
   constructPlayer();
-  gameObjects.push_back(std::make_shared<Enemy>(std::vector<std::shared_ptr<GameObject>>{player}, geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 50,50));
+  gameObjects.push_back(std::make_shared<Enemy>(std::vector<std::shared_ptr<GameObject>>{player}, geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 200,200));
 }
 
 Ecran::~Ecran(){
