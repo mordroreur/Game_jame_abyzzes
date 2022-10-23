@@ -10,10 +10,11 @@ class Enemy: public Entity
 
 
 public:
+    Enemy(std::vector<std::shared_ptr<GameObject>> cibles, geometrie::Vecteur2<float> position, std::shared_ptr<Image> image, int wight, int height);
+    void update(int delta) override; 
 
-    using Entity::Entity;
-    
-    void update(int delta); 
+private:
+	std::vector<std::shared_ptr<GameObject>> cibles;
 
 };
 

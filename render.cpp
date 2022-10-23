@@ -12,7 +12,7 @@
 #include "geometrie/geometrie.hxx"
 #include "logger.h"
 
-static std::mutex mutexDo;
+
 
 
 SDL_Rect camRectFromPlayerRect(const SDL_Rect& playerRect, const float aspectRatio) {

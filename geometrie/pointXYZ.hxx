@@ -2,7 +2,7 @@
 #define PointXYZZ_HXX
 
 #include <math.h>
-
+/*
 namespace geometrie {
 	template <typename T>
 	struct PointXYZ {
@@ -42,5 +42,5 @@ namespace geometrie {
 		return {p.x, p.y, p.z};
 	}
 }
-
+*/
 #endif // PointXYZZ_HXX

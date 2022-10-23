@@ -11,11 +11,11 @@
 #include "Input.hpp"
 #include "geometrie/geometrie.hxx"
 
-static std::mutex mutexDo;
+
 
 
 void startMainBoucle(std::shared_ptr<Ecran> ec){
-  bool dep[4] = {false, false, false, false};
+  float dep[4] = {0, 0, 0, 0};
   bool powerOn = false;
 
   
@@ -48,7 +48,21 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 			
 
 			std::scoped_lock l(mutexDo);
+
+
+			
 			ticks(ec, delatTime);
+
+			for (auto object: ec->gameObjects)
+			{
+				if (object != ec->player)
+				{
+					if (object->collideWith(ec->player))
+					{
+						std::cout << "Gotcha" << std::endl;
+					}
+				}
+			}
 			
 			LastTick += timeForNewTick;
 			tickCount++;
@@ -80,20 +94,20 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
                           //std::cout << event.key.keysym.sym << std::endl;
                           switch (event.key.keysym.sym) {
                           case SDLK_SPACE: powerOn = true;break;
-                          case SDLK_z: dep[0] = true;break;//haut
-                          case SDLK_d: dep[1] = true;break;//droite
-                          case SDLK_s: dep[2] = true;break;//bas
-                          case SDLK_q: dep[3] = true;break;//gauche
+                          case SDLK_z: dep[0] = 1.0;break;//haut
+                          case SDLK_d: dep[1] = 1.0;break;//droite
+                          case SDLK_s: dep[2] = 1.0;break;//bas
+                          case SDLK_q: dep[3] = 1.0;break;//gauche
                           default:break;
                           }
 				break;
 			case SDL_KEYUP:
                           switch (event.key.keysym.sym) {
                           case SDLK_SPACE: powerOn = false;break;
-                          case SDLK_z: dep[0] = false;break;//haut
-                          case SDLK_d: dep[1] = false;break;//droite
-                          case SDLK_s: dep[2] = false;break;//bas
-                          case SDLK_q: dep[3] = false;break;//gauche
+                          case SDLK_z: dep[0] = 0.0;break;//haut
+                          case SDLK_d: dep[1] = 0.0;break;//droite
+                          case SDLK_s: dep[2] = 0.0;break;//bas
+                          case SDLK_q: dep[3] = 0.0;break;//gauche
                           default:break;
                           }
 		//if(event.key.keysym.sym == SDLK_F11){
@@ -137,10 +151,9 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 				break;
 			}
 		}
-                tempory.direction = geometrie::Vecteur2<float>{dep[1] + (-1.0)*dep[3], dep[2] + (-1.0)*dep[0]};
-                tempory.power = powerOn;
-                ec->player->setInput(tempory);
-                
+		tempory.direction = geometrie::Vecteur2<float>{dep[1] - dep[3], dep[2] - dep[0]};
+		tempory.power = powerOn;
+		ec->player->setInput(tempory);
 	}
 	drawThread.join();
 }

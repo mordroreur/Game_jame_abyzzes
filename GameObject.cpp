@@ -1,12 +1,11 @@
 #include "GameObject.hpp"
+#include "geometrie/string.hxx"
+
 
 
 GameObject::GameObject(geometrie::Vecteur2<float> p, std::shared_ptr<Image> im, int w, int h)
+	:position {p}, image{im}, width{w}, height{h}
 {
-    position = p;
-    image = im;
-    width = w;
-    height = h;
 }
 
 std::shared_ptr<Image> GameObject::getImage()
@@ -25,3 +24,21 @@ SDL_Rect GameObject::getRect()
     return rect;
 }
 
+SDL_bool GameObject::collideWith(std::shared_ptr<GameObject> other)
+{
+    SDL_bool result = SDL_FALSE;
+
+    if (other != NULL)
+    {
+        SDL_Rect objectRect = getRect();
+        SDL_Rect otherRect = other->getRect();
+        result = SDL_HasIntersection(&objectRect,&otherRect);
+    }
+    return result;
+}
+
+
+geometrie::Vecteur2<float> GameObject::getPosition() {
+  geometrie::toString(position);
+	return position;
+};
