@@ -73,11 +73,21 @@ bool Ecran::init(int x, int y){
   return true;
 }
 
+void Ecran::supprimerObjets() {
+	for (auto o : objetsASupprimer) {
+		std::remove(gameObjects.begin(), gameObjects.end(), o);
+	}
+}
+
 void Ecran::constructPlayer(std::shared_ptr<Enemy> chien) {
   player = std::make_shared<Player>([this, chien](std::shared_ptr<GameObject> go){
 	gameObjects.push_back(go);
 	chien->add_cible(go);
-  }, 
+  },
+  [this](std::shared_ptr<GameObject> go){
+		objetsASupprimer.push_back(go);
+  }
+  ,
 	getImage(NomImage::Algue),
   	geometrie::Vecteur2<float>{100.0,100.0}, getImage(NomImage::Siren), 100,200);
 	gameObjects.push_back(player);

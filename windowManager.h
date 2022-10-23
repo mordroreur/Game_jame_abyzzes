@@ -22,13 +22,14 @@ public :
 
   etapeJeu ej;
 
-
+	void supprimerObjets();
   
   std::shared_ptr<Image> getImage(const NomImage& ni);
   SDL_Renderer* getRenderer();
   SDL_Rect getWindowRect();
 
   std::vector<std::shared_ptr<GameObject>> gameObjects;
+  std::vector<std::shared_ptr<GameObject>> objetsASupprimer;
   std::shared_ptr<Player> player;
   int sizex, sizey;
 private:

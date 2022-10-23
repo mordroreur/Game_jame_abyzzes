@@ -21,6 +21,7 @@ public:
     virtual void update(int delta) = 0;
 
     SDL_bool collideWith(std::shared_ptr<GameObject> other);
+	virtual void reactCollision(std::shared_ptr<GameObject> other) {};
 
     std::shared_ptr<Image> getImage();
     SDL_Rect getRect();

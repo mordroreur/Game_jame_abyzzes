@@ -13,6 +13,12 @@ void Enemy::add_cible(std::shared_ptr<GameObject> cible) {
 	cibles.push_back(cible);
 }
 
+void Enemy::reactCollision(std::shared_ptr<GameObject> other) {
+	if (other == cibles.back() && cibles.size() > 1) {
+		cibles.pop_back();
+	}
+}
+
 void Enemy::update(int delta)
 {
 	using namespace geometrie;
@@ -24,8 +30,6 @@ void Enemy::update(int delta)
 		return;
 		}*/
 	direction = (cible)->getPosition() - position;
-	log("E");
-	log(direction);
 
 	move();
 }

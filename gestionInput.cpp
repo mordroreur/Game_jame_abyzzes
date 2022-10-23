@@ -53,16 +53,6 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 			
 			ticks(ec, delatTime);
 
-			for (auto object: ec->gameObjects)
-			{
-				if (object != ec->player)
-				{
-					if (object->collideWith(ec->player))
-					{
-						std::cout << "Gotcha" << std::endl;
-					}
-				}
-			}
 			
 			LastTick += timeForNewTick;
 			tickCount++;

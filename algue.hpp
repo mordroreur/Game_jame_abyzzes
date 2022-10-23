@@ -3,13 +3,16 @@
 
 #include "Entity.hpp"
 
+
 class Algue : public Entity {
 	public:
     Algue(geometrie::Vecteur2<float> position_, std::shared_ptr<Image> image_, geometrie::Vecteur2<float> direction_);
 
     void update(int delta) override;
+	void reactCollision(std::shared_ptr<GameObject> other) override;
 
-
+	private:
+	std::shared_ptr<GameObject> aSuivre = nullptr;
 };
 
 #endif //ALGUE_H_INCLUDED
