@@ -1,7 +1,7 @@
 #include "GameObject.hpp"
 
 
-GameObject::GameObject(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, int w, int h)
+GameObject::GameObject(geometrie::Vecteur2<float> p, std::shared_ptr<Image> im, int w, int h)
 {
     position = p;
     image = im;

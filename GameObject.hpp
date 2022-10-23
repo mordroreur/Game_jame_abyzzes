@@ -13,13 +13,13 @@ private:
 
 protected:
 
-    geometrie::Vecteur2<int> position;
+    geometrie::Vecteur2<float> position;
     std::shared_ptr<Image>  image;
     int width;
     int height;
        
 public:
-    GameObject(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, int w, int h);
+    GameObject(geometrie::Vecteur2<float> p, std::shared_ptr<Image> im, int w, int h);
     virtual void update(int delta) = 0;
 
     std::shared_ptr<Image> getImage();

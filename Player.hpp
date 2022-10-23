@@ -11,7 +11,7 @@ private:
 
 public:
 
-    Player(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, int w, int h) 
+    Player(geometrie::Vecteur2<float> p, std::shared_ptr<Image> im, int w, int h) 
     : Entity(p, im, w, h), input{}
     {
       speed = 1;

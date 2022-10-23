@@ -10,7 +10,7 @@ Ecran::Ecran():ej(etapeJeu::menu){
   //load images
   populateImages();
 
-  gameObjects.push_back(std::make_shared<Player>(geometrie::Vecteur2<int>{200,100}, getImage(NomImage::Ennemy1), 50,50));
+  gameObjects.push_back(std::make_shared<Player>(geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 50,50));
   constructPlayer();
 
 }
@@ -74,7 +74,7 @@ bool Ecran::init(int x, int y){
 }
 
 void Ecran::constructPlayer() {
-	player = std::make_shared<Player>(geometrie::Vecteur2<int>{100,100}, getImage(NomImage::Siren), 100,200);
+	player = std::make_shared<Player>(geometrie::Vecteur2<float>{100.0,100.0}, getImage(NomImage::Siren), 100,200);
 	gameObjects.push_back(player);
 }
 

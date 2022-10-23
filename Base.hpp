@@ -12,7 +12,7 @@ private:
 public:
     
 
-    Base(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, int w, int h)
+    Base(geometrie::Vecteur2<float> p, std::shared_ptr<Image> im, int w, int h)
     : GameObject(p, im, w, h)
     {
         health = 100;

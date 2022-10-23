@@ -1,5 +1,6 @@
 #include "Entity.hpp"
-
+#include "geometrie/string.hxx"
+#include <iostream>
 
 
 void Entity::loseHealth(short int amountLost)
@@ -10,8 +11,11 @@ void Entity::loseHealth(short int amountLost)
 
 void Entity::move()
 {
-  if(direction != geometrie::Vecteur2<float>{0, 0})
-  position = position + geometrie::vecteur2From<int>(speed * geometrie::normalized(direction)); 
+  if(direction != geometrie::Vecteur2<float>{0, 0}){
+    position = position + speed * geometrie::normalized(direction);
+   }
+  
+  
 }
 
 
