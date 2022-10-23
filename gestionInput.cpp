@@ -48,7 +48,21 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 			
 
 			std::scoped_lock l(mutexDo);
+
+
+			
 			ticks(ec, delatTime);
+
+			for (auto object: ec->gameObjects)
+			{
+				if (object != ec->player)
+				{
+					if (object->collideWith(ec->player))
+					{
+						std::cout << "Gotcha" << std::endl;
+					}
+				}
+			}
 			
 			LastTick += timeForNewTick;
 			tickCount++;
@@ -140,6 +154,8 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
                 tempory.direction = geometrie::Vecteur2<float>{dep[1] + (-1.0)*dep[3], dep[2] + (-1.0)*dep[0]};
                 tempory.power = powerOn;
                 ec->player->setInput(tempory);
+
+			
                 
 	}
 	drawThread.join();

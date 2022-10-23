@@ -22,6 +22,8 @@ public:
     GameObject(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, int w, int h);
     virtual void update(int delta) = 0;
 
+    SDL_bool collideWith(std::shared_ptr<GameObject> other);
+
     std::shared_ptr<Image> getImage();
     SDL_Rect getRect();
 };

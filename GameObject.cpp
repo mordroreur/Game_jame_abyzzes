@@ -25,3 +25,16 @@ SDL_Rect GameObject::getRect()
     return rect;
 }
 
+SDL_bool GameObject::collideWith(std::shared_ptr<GameObject> other)
+{
+    SDL_bool result = SDL_FALSE;
+
+    if (other != NULL)
+    {
+        SDL_Rect objectRect = getRect();
+        SDL_Rect otherRect = other->getRect();
+        result = SDL_HasIntersection(&objectRect,&otherRect);
+    }
+    return result;
+}
+
