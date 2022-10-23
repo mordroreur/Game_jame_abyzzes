@@ -4,6 +4,7 @@
 enum class NomImage {
 	Siren,
 	Ennemy1,
+	BackGround,
 	Algue
 };
 
