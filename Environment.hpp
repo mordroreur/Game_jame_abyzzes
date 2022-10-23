@@ -13,9 +13,11 @@ class Environment : public Entity
   {
     speed = (1.0*rand())/RAND_MAX * 5.0;
     direction = geometrie::Vecteur2<float>{0.0, 1.0};
+    lifeTime = 12000;
   }
   void update(int delta) override;
   void reactCollision(std::shared_ptr<GameObject> other) override;
+  int lifeTime;
 private:
 
 };

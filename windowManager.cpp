@@ -17,11 +17,6 @@ Ecran::Ecran():ej(etapeJeu::menu){
   gameObjects.push_back(chien);
   constructPlayer(chien);
 
-
-  auto cailloux = std::make_shared<Environment>(geometrie::Vecteur2<float>{200.0,150.0}, getImage(NomImage::Caillasse), 70,70, 10.0, 20);
-  gameObjects.push_back(cailloux);
-  cailloux = std::make_shared<Environment>(geometrie::Vecteur2<float>{200.0,250.0}, getImage(NomImage::Caillasse), 200,200, 10.0, 20);
-  gameObjects.push_back(cailloux);
 }
 
 Ecran::~Ecran(){
