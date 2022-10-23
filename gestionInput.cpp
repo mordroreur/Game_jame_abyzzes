@@ -59,7 +59,7 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 				{
 					if (object->collideWith(ec->player))
 					{
-						std::cout << "Gotcha" << std::endl;
+					  //std::cout << "Gotcha" << std::endl;
 					}
 				}
 			}
@@ -108,6 +108,7 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
                           case SDLK_d: dep[1] = 0.0;break;//droite
                           case SDLK_s: dep[2] = 0.0;break;//bas
                           case SDLK_q: dep[3] = 0.0;break;//gauche
+			  case SDLK_ESCAPE: ec->ej=etapeJeu::fin;
                           default:break;
                           }
 		//if(event.key.keysym.sym == SDLK_F11){
