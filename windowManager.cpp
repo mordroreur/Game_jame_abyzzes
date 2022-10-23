@@ -96,8 +96,8 @@ void Ecran::constructPlayer(std::shared_ptr<Enemy> chien) {
   },
   [this](std::shared_ptr<GameObject> go){
 		objetsASupprimer.push_back(go);
-  }
-  ,
+  },
+	chien,
 	getImage(NomImage::Algue),
   	geometrie::Vecteur2<float>{100.0,100.0}, getImage(NomImage::Siren), 100,200);
 	gameObjects.push_back(player);

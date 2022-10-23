@@ -15,13 +15,7 @@ std::shared_ptr<Image> GameObject::getImage()
 
 SDL_Rect GameObject::getRect()
 {
-    SDL_Rect rect;
-    rect.x = position.x;
-    rect.y = position.y;
-    rect.w = width;
-    rect.h = height;
-
-    return rect;
+    return SDL_Rect{static_cast<int>(position.x-width/2.0), static_cast<int>(position.y-height/2.0), width, height};
 }
 
 SDL_bool GameObject::collideWith(std::shared_ptr<GameObject> other)

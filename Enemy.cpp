@@ -39,7 +39,7 @@ void Enemy::update(int delta)
 		direction = player->getPosition() - position;
 	}
 	else {
-		auto cibleShared = cibles.back().lock();
+		auto cibleShared = cibles.front().lock();
 		if (cibleShared) {
 			direction = cibleShared->getPosition() - position;
 		}

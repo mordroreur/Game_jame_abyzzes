@@ -20,6 +20,19 @@ void Player::setInput(Input newInput)
 		algues.push_back(algue);
 		addObject(algue);
 	}
+
+	if (newInput.power) {
+		auto c = chien.lock();
+		if (c) {
+			c->speed = 30;
+		}
+	}
+	else {
+		auto c = chien.lock();
+		if (c) {
+			c->speed = 10;
+		}
+	}
 }
 
 void Player::reactCollision(std::shared_ptr<GameObject> other) {
