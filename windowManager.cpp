@@ -4,6 +4,7 @@
 #include "image/imageFixe.hpp"
 #include "image/imageAnimee.hpp"
 #include "Enemy.hpp"
+#include "Environment.hpp"
 
 Ecran::Ecran():ej(etapeJeu::menu){
   if(!init(1080, 750)){
@@ -15,6 +16,12 @@ Ecran::Ecran():ej(etapeJeu::menu){
   auto chien = std::make_shared<Enemy>(geometrie::Vecteur2<float>{200.0,100.0}, getImage(NomImage::Ennemy1), 150,150);
   gameObjects.push_back(chien);
   constructPlayer(chien);
+
+
+  auto cailloux = std::make_shared<Environment>(geometrie::Vecteur2<float>{200.0,150.0}, getImage(NomImage::Caillasse), 70,70, 10.0, 20);
+  gameObjects.push_back(cailloux);
+  cailloux = std::make_shared<Environment>(geometrie::Vecteur2<float>{200.0,250.0}, getImage(NomImage::Caillasse), 200,200, 10.0, 20);
+  gameObjects.push_back(cailloux);
 }
 
 Ecran::~Ecran(){
@@ -119,6 +126,8 @@ void Ecran::populateImages() {
 			std::vector{"images/enemyAva.png"s, "images/enemy.png"s, "images/enemyArr.png"s, "images/enemy.png"s}, 200000)});
 	images.insert(std::pair{NomImage::BackGround, std::make_shared<ImageFixe>(getRenderer(), "images/background.png"s)});
 	images.insert(std::pair{NomImage::Algue, std::make_shared<ImageFixe>(getRenderer(), "images/algue.png"s)});
+		images.insert(std::pair{NomImage::Caillasse, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/caillasse.png"})});
+
 }
 
 
