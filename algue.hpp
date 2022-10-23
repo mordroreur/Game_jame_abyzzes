@@ -12,7 +12,7 @@ class Algue : public Entity {
 	void reactCollision(std::shared_ptr<GameObject> other) override;
 
 	private:
-	std::shared_ptr<GameObject> aSuivre = nullptr;
+	std::weak_ptr<GameObject> aSuivre;
 };
 
 #endif //ALGUE_H_INCLUDED

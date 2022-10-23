@@ -13,7 +13,7 @@ private:
 	std::function<void(std::shared_ptr<GameObject>)> addObject;
 	std::function<void(std::shared_ptr<GameObject>)> removeObject;
 	std::shared_ptr<Image> imageAlgue;
-	std::vector<std::shared_ptr<GameObject>> algues;
+	std::vector<std::weak_ptr<GameObject>> algues;
 public:
 
     Player(std::function<void(std::shared_ptr<GameObject>)> addObject_,

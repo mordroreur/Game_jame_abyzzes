@@ -7,14 +7,16 @@ Algue::Algue(geometrie::Vecteur2<float> position_, std::shared_ptr<Image> image_
 }
 
 void Algue::reactCollision(std::shared_ptr<GameObject> other) {
-	if (aSuivre == nullptr) {
+	auto shared = aSuivre.lock();
+	if (!shared) {
 		aSuivre = other;
 	}
 }
 
 void Algue::update(int delta) {
-	if (aSuivre != nullptr) {
-		position = aSuivre->getPosition();
+	auto shared = aSuivre.lock();
+	if (shared != nullptr) {
+		position = shared->getPosition();
 		return;
 	}
 
