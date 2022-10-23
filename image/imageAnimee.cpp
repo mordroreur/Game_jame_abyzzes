@@ -18,14 +18,13 @@ ImageAnimee::~ImageAnimee() {
 }
 
 
-void ImageAnimee::draw(SDL_Renderer* renderer, const SDL_Rect& destination, unsigned int deltaTime) {
+void ImageAnimee::draw(SDL_Renderer* renderer, const SDL_Rect& destination, bool faceLeft, unsigned int deltaTime) {
 	timeSinceChanged += deltaTime;
 	while (timeSinceChanged>=timeByFrame) {
 		timeSinceChanged-= timeByFrame;
 		rangImgActuelle++;
 		rangImgActuelle %= textures.size();
 	}
-
-	SDL_RenderCopy(renderer, textures[rangImgActuelle], NULL, &destination);
+	drawImage(renderer, textures[rangImgActuelle], destination, faceLeft);
 }
 

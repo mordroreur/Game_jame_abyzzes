@@ -50,7 +50,7 @@ void Affichage(std::shared_ptr<Ecran> ec, int deltaTime){
 			const auto rect = worldToCam(go->getRect(), camRect, windowRect);
 			
 			if (rect.has_value()) {
-				go->getImage()->draw(renderer, rect.value());
+				go->getImage()->draw(renderer, rect.value(), go->faceLeft(), deltaTime);
 			}
 		}
 	}

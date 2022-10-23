@@ -22,6 +22,7 @@ public:
 
     SDL_bool collideWith(std::shared_ptr<GameObject> other);
 	virtual void reactCollision(std::shared_ptr<GameObject> other) {};
+	virtual bool faceLeft() {return true;};
 
     std::shared_ptr<Image> getImage();
     SDL_Rect getRect();

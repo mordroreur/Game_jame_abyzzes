@@ -17,6 +17,7 @@ public:
     float speed;
     short int health;
 
+	bool faceLeft() override {return direction.x<=0;};
 
     virtual void move() override;
     virtual void updateSpeed(int newSpeed) override;
