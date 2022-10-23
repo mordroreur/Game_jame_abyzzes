@@ -151,18 +151,9 @@ void startMainBoucle(std::shared_ptr<Ecran> ec){
 				break;
 			}
 		}
-<<<<<<< HEAD
-                tempory.direction = geometrie::Vecteur2<float>{dep[1] + (-1.0)*dep[3], dep[2] + (-1.0)*dep[0]};
-                tempory.power = powerOn;
-                ec->player->setInput(tempory);
-
-			
-                
-=======
 		tempory.direction = geometrie::Vecteur2<float>{dep[1] - dep[3], dep[2] - dep[0]};
 		tempory.power = powerOn;
 		ec->player->setInput(tempory);
->>>>>>> 3d75859762b16ebd77bac9d744971bf7c748e413
 	}
 	drawThread.join();
 }
