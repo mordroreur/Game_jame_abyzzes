@@ -4,9 +4,9 @@
 
 void Environment::update(int delat) {
   move();
-  lifeTime--;
-  if(lifeTime == 0){
-    //////////////////DEEEEEESSSSSTRRRRRRROOOOOOYYY
+  lifeTime -= delat;
+  if(lifeTime <= 0){
+	removeObject(this);
   }
 }
 
@@ -24,6 +24,7 @@ void Environment::reactCollision(std::shared_ptr<GameObject> other){
     vec.y = vec.y+100;
   }else if(position.y+width/4 > vec.y){
     vec.y = vec.y-100;
+
   }
   other->setPosition(vec);
 }
