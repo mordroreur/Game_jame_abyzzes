@@ -2,6 +2,7 @@
 #include <time.h>
 #include "windowManager.h"
 #include "image/imageFixe.hpp"
+#include "Enemy.hpp"
 
 Ecran::Ecran():ej(etapeJeu::menu){
   if(!init(1080, 750)){
@@ -10,9 +11,8 @@ Ecran::Ecran():ej(etapeJeu::menu){
   //load images
   populateImages();
 
-  gameObjects.push_back(std::make_shared<Player>(geometrie::Vecteur2<int>{200,100}, getImage(NomImage::Ennemy1), 50,50));
   constructPlayer();
-
+  gameObjects.push_back(std::make_shared<Enemy>(std::vector<std::shared_ptr<GameObject>>{player}, geometrie::Vecteur2<int>{200,100}, getImage(NomImage::Ennemy1), 50,50));
 }
 
 Ecran::~Ecran(){

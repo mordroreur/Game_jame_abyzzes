@@ -9,10 +9,10 @@
 class Entity : public GameObject , public Movable , public HealthLosable
 {
 public:
+	
+    Entity(geometrie::Vecteur2<int> position, std::shared_ptr<Image> image, int width, int height, short int speed, short int health);
 
-
-    using  GameObject::GameObject;
-    geometrie::Vecteur2<float> direction;
+    geometrie::Vecteur2<float> direction = geometrie::Vecteur2<float>{0.0,0.0};
     short int speed;
     short int health;
 
@@ -22,9 +22,6 @@ public:
     virtual void updateDirection(geometrie::Vecteur2<float> direction) override;
     void loseHealth(short int amountLost) override;
     void update(int delta);
-    
-
-
 };
 
 
