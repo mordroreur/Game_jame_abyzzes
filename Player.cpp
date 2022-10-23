@@ -25,7 +25,10 @@ void Player::setInput(Input newInput)
 void Player::reactCollision(std::shared_ptr<GameObject> other) {
 	auto sizeBefore = algues.size();
 	
-	auto last = std::remove(algues.begin(), algues.end(), other);
+	auto last = std::remove_if(algues.begin(), algues.end(), [other](auto c) {
+		auto l=c.lock();
+		return l==nullptr || l == other;
+	});
 	algues.erase(last, std::end(algues));
 	if (algues.size() < sizeBefore) {
 		removeObject(other);
