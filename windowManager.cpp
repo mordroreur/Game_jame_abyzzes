@@ -17,7 +17,9 @@ Ecran::Ecran():ej(etapeJeu::menu){
   constructPlayer(chien);
 
 
-  auto cailloux = std::make_shared<Environment>(geometrie::Vecteur2<float>{200.0,150.0}, getImage(NomImage::Ennemy1), 200,200, 10.0, 20);
+  auto cailloux = std::make_shared<Environment>(geometrie::Vecteur2<float>{200.0,150.0}, getImage(NomImage::Caillasse), 70,70, 10.0, 20);
+  gameObjects.push_back(cailloux);
+  cailloux = std::make_shared<Environment>(geometrie::Vecteur2<float>{200.0,250.0}, getImage(NomImage::Caillasse), 200,200, 10.0, 20);
   gameObjects.push_back(cailloux);
 }
 
@@ -120,6 +122,7 @@ void Ecran::populateImages() {
 	images.insert(std::pair{NomImage::Ennemy1, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/enemy.png"})});
 	images.insert(std::pair{NomImage::BackGround, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/background.png"})});
 	images.insert(std::pair{NomImage::Algue, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/algue.png"})});
+	images.insert(std::pair{NomImage::Caillasse, std::make_shared<ImageFixe>(getRenderer(), std::string{"images/caillasse.png"})});
 }
 
 

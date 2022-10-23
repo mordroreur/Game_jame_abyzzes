@@ -38,7 +38,10 @@ SDL_bool GameObject::collideWith(std::shared_ptr<GameObject> other)
 }
 
 
-geometrie::Vecteur2<float> GameObject::getPosition() {
-  geometrie::toString(position);
-	return position;
+geometrie::Vecteur2<float> GameObject::getPosition() { return position; };
+
+void GameObject::setPosition(geometrie::Vecteur2<float> newVec) {
+  position = newVec;
 };
+
+

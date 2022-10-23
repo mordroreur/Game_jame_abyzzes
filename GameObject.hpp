@@ -25,8 +25,9 @@ public:
 
     std::shared_ptr<Image> getImage();
     SDL_Rect getRect();
-  geometrie::Vecteur2<float> getPosition(); 
-	
+  geometrie::Vecteur2<float> getPosition();
+  
+  void setPosition(geometrie::Vecteur2<float> newVec);
 };
 
 
