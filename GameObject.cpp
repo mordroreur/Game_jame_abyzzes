@@ -2,11 +2,8 @@
 
 
 GameObject::GameObject(geometrie::Vecteur2<int> p, std::shared_ptr<Image> im, int w, int h)
+	:position {p}, image{im}, width{w}, height{h}
 {
-    position = p;
-    image = im;
-    width = w;
-    height = h;
 }
 
 std::shared_ptr<Image> GameObject::getImage()
@@ -25,3 +22,7 @@ SDL_Rect GameObject::getRect()
     return rect;
 }
 
+
+geometrie::Vecteur2<int> GameObject::getPosition() {
+	return position;
+};
