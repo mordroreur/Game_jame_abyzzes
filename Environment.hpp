@@ -20,7 +20,7 @@ class Environment : public Entity
   }
   void update(int delta) override;
   void reactCollision(std::shared_ptr<GameObject> other) override;
-  int lifeTime;
+  long long lifeTime;
 private:
 
 };
